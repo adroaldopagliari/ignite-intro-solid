@@ -1,8 +1,8 @@
 import { v4 as uuidV4 } from 'uuid';
 
 class User {
-  constructor(partial: Partial<User>) {
-    Object.assign(this, { ...partial, id: uuidV4(), updated_at: new Date() });
+  constructor() {
+    if (!this.id) this.id = uuidV4();
   }
 
   id: string;
