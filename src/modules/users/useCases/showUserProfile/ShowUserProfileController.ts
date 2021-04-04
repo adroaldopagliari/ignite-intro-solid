@@ -8,14 +8,12 @@ class ShowUserProfileController {
   handle(request: Request, response: Response): Response {
     const { user_id } = request.params;
 
-    console.log('User profile', user_id);
-
     try {
       const user = this.showUserProfileUseCase.execute({ user_id });
 
       return response.status(200).json(user);
     } catch (err) {
-      return response.status(400).json({ err: err.message });
+      return response.status(404).json({ err: err.message });
     }
   }
 }
